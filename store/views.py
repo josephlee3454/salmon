@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+from .models import * 
 
 # Create your views here.
 def store(request):
-  context = {}
+  products = Product.objects.all()
+  context = {'products':products}
   return render(request, 'store/store.html', context)
 
 def cart(request):
